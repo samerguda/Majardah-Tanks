@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Majardah Tanks</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="header">
+        <h1>Majardah Tanks</h1>
+        <div id="datetime"></div>
+    </div>
+    
+    <table>
+        <thead>
+            <tr>
+                <th>Tank Identifier</th>
+                <th>Code</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>TANK SM1-ALN</td>
+                <td>C12</td>
+            </tr>
+            <tr>
+                <td>TANK SM1-KYM</td>
+                <td>C13</td>
+            </tr>
+            <tr>
+                <td>TANK SM1-KBH</td>
+                <td>C14</td>
+            </tr>
+            <tr>
+                <td>TANK SM1-MAH</td>
+                <td>C15</td>
+            </tr>
+            <tr>
+                <td>TANK-1 SM1-TAR</td>
+                <td>C16</td>
+            </tr>
+        </tbody>
+    </table>
+    <h4>النوتي - خيم - خميس البحر - ثلوث - تارقش- قنا - محايل </h4>
+    <h4>   نخخ ثت قم    </h4>
+    
+    <div class="buttons">
+        <button onclick="copyTable()">Copy Content</button>
+        <button onclick="window.print()">Print</button>
+    </div>
+    
+    <script>
+        function updateDateTime() {
+            const now = new Date();
+            const date = now.toLocaleDateString();
+            const time = now.toLocaleTimeString();
+            document.getElementById('datetime').textContent = `${date} ${time}`;
+        }
+        setInterval(updateDateTime, 1000);
+
+        function copyTable() {
+            const table = document.querySelector('table');
+            const range = document.createRange();
+            range.selectNode(table);
+            window.getSelection().removeAllRanges();
+            window.getSelection().addRange(range);
+            document.execCommand('copy');
+            window.getSelection().removeAllRanges();
+            alert("Table content copied to clipboard.");
+        }
+    </script>
+</body>
+</html>
